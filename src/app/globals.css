@@ -1,27 +1,65 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+main {
+  width: 100vw;
+  height: 100%;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.container {
+  width: 70vw;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+h4 {
+  text-align: left;
+}
+.textHeader {
+  margin: 5px;
+  background-color: lightgoldenrodyellow;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputHeader {
+  width: 300px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+input {
+  border-radius: 8px;
+  width: 400px;
+  height: 40px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.head0 {
+}
+
+button {
+  margin-top: 30px;
+  padding: 20px 30px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 30px;
 }
