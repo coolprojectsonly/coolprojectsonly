@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import languages from "./languages";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "./createReducer";
@@ -19,6 +19,8 @@ function App() {
 
   const [text, setText] = useState("");
 
+  const [lan, setLanguage] = useState("");
+
   // useEffect(() => {
   //   dispatch(
   //     fetchData({
@@ -30,6 +32,7 @@ function App() {
 
   const handleLanguageChange = (event) => {
     setSelectedLanguage(event.target.value);
+    setLanguage(event.target.name);
   };
 
   const handleSubmit = (event) => {
@@ -101,7 +104,7 @@ function App() {
   // console.log(translation.status);
 
   if (status === "Loading") {
-    return <h1>Translating..</h1>;
+    return <h1>Loading {lan}</h1>;
   }
 
   if (status === "error") {
@@ -137,7 +140,7 @@ function App() {
                 width: "220px",
                 height: "40px",
                 listStyle: "none",
-                marginLeft: "6vw",
+                marginLeft: "20vw",
                 marginRight: "26vw",
               }}
             >
@@ -148,10 +151,14 @@ function App() {
                   overflow: "hidden",
                 }}
               >
-                Choose Language...
+                Select...
               </option>
               {languages.map((language) => (
-                <option key={language.code} value={language.code}>
+                <option
+                  key={language.code}
+                  value={language.code}
+                  name={language.name}
+                >
                   {language.name}
                 </option>
               ))}
@@ -162,7 +169,7 @@ function App() {
               animate={textareaControls3}
               type="submit"
             >
-              Translate
+              Submit
             </motion.button>
           </div>
         </div>
@@ -195,7 +202,7 @@ function App() {
                 fontSize: "30px",
               }}
               onChange={(e) => setText(e.target.value)}
-              placeholder="Type text for translation here..."
+              placeholder="Enter text for translation..."
               initial={{ scale: 1 }}
               onMouseEnter={handleTextarea2}
               animate={textareaControls2}
@@ -213,9 +220,9 @@ function App() {
               initial={{ scale: 1 }}
               onMouseEnter={handleTextarea}
               animate={textareaControls}
-            >
-              {translation?.data?.translatedText}
-            </motion.textarea>
+              value={translation?.data?.translatedText}
+              readOnly
+            ></motion.textarea>
           </div>
         </div>
       </form>
